@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="templates/pattern.html">
+	
+	<ui:define name="menu">
+		<div id='cssmenu'>
+			<ul>
+				<li><a href='main.jsf'><span>START</span></a></li>
+				<li class='active'><a href='mojesOKI.jsf'><span>NASZE
+							SOKI</span></a></li>
+				<li><a href='oNas.jsf'><span>O NAS</span></a></li>
+				<li class='last'><a href='kontakt.jsf'><span>KONTAKT</span></a></li>
+			</ul>
+		</div>
+	</ui:define>
+
+	<ui:define name="przyciski">
+		<div id='cssmenu2'>
+			<ul>
+				<li class='active last'><a href='dodaj.jsf'><span>Dodaj</span></a></li>
+			</ul>
+		</div>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable value="#{sokBean.allSoki}" var="sok" styleClass="sok"
+				rowClasses="odd,even">
+
+				<h:column headerstyleClass="first">
+					<!-- column header -->
+					<f:facet name="header">Marka</f:facet>
+					<!-- row record -->
+    				#{sok.marka}
+    			</h:column>
+
+				<h:column>
+					<f:facet name="header">Nazwa</f:facet>
+    				#{sok.nazwa}
+    			</h:column>
+
+				<h:column>
+					<f:facet name="header">Typ</f:facet>
+    				#{sok.gatunek}
+    			</h:column>
+
+				<h:column>
+					<f:facet name="header">Opis</f:facet>
+    				#{sok.opis}
+    			</h:column>
+
+				<h:column>
+					<f:facet name="header">Akcja</f:facet>
+					<h:commandLink value="Usuń" action="#{sokBean.usunSok}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

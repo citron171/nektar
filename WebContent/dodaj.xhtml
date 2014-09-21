@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="templates/pattern.html">
+
+	<ui:define name="menu">
+		<div id='cssmenu'>
+			<ul>
+				<li><a href='main.jsf'><span>START</span></a></li>
+				<li class='active'><a href='mojeSoki.jsf'><span>NASZE
+							SOKI</span></a></li>
+				<li><a href='oNas.jsf'><span>O NAS</span></a></li>
+				<li class='last'><a href='kontakt.jsf'><span>KONTAKT</span></a></li>
+			</ul>
+		</div>
+	</ui:define>
+
+	<ui:define name="przyciski">
+		<div id='cssmenu2'>
+			<ul>
+				<li class='active last'><a href='mojeSoki.jsf'><span>Anuluj</span></a></li>
+			</ul>
+		</div>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form id="form_862734" class="appnitro">
+			<div id="form_container">
+				<h1>
+					<a>Dodaj nowy sok</a>
+				</h1>
+				<div class="form_description">
+					<h2>Dodaj nowy sok</h2>
+					<p>Wypełnij formularz, uzupełniając pola zgodnie z ich
+						przeznaczeniem</p>
+				</div>
+
+				<h:panelGrid columns="2">					
+						<h:outputText class="description" value="Marka:" /> 								
+						<h:inputText id="markaInputId" 
+						value="#{sokBean.sok.marka}"/> 
+
+						<h:outputText class="description" value="Nazwa:" /> 
+						<h:inputText id="nazwaInputId"
+						value="#{sokBean.sok.nazwa}" />
+
+						<h:outputText class="description" value="Gatunek:" /> 
+						<h:selectOneMenu id="gatunekInputId" value="#{sokBean.sok.gatunek}">
+							   	<f:selectItem itemValue="Klarowany" itemLabel="Klarowany" />
+							   	<f:selectItem itemValue="Naturalny" itemLabel="Naturalny" />
+								<f:selectItem itemValue="Przecierowy" itemLabel="Przecierowy" />							   	
+							   	<f:selectItem itemValue="Nektar" itemLabel="Nektar" />
+							   	<f:selectItem itemValue="Owocowy" itemLabel="Owocowy" />
+							   	<f:selectItem itemValue="Warzywny" itemLabel="Warzywny" />
+							   	<f:selectItem itemValue="Owocowo-Warzywny" itemLabel="Owocowo-Warzywny" />
+							   	
+   						</h:selectOneMenu>
+   						
+						<h:outputText class="description" value="Opis:" /> 
+						<h:inputTextarea id="opisInputId"
+						value="#{sokBean.sok.opis}" rows="5" cols="30"/>
+
+				</h:panelGrid>
+				
+				<h:panelGrid>					
+						<h:commandButton value="Zapisz"	action="#{sokBean.addSok}" />
+				</h:panelGrid>
+						
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
